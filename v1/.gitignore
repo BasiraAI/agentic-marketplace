@@ -1,0 +1,55 @@
+# --- dependencies ---
+node_modules/
+.pnpm-store/
+
+# --- build output ---
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# --- next.js ---
+web/.next/
+web/out/
+web/next-env.d.ts
+
+# --- anchor / solana / rust ---
+program/target/
+program/.anchor/
+program/test-ledger/
+**/*.rs.bk
+Cargo.lock.bak
+
+# --- env / secrets ---
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# --- keypairs (NEVER commit) ---
+devnet.json
+*-keypair.json
+verifier-keypair.json
+program/program-keypair.json
+keys/
+
+# --- logs ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# --- editors / OS ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# --- coverage / test artifacts ---
+coverage/
+.nyc_output/
+
+# --- claude code worktrees (local only) ---
+.claude/worktrees/
