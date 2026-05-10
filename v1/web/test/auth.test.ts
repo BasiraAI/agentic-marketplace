@@ -1,19 +1,17 @@
-import { describe, it, expect, beforeAll } from "vitest";
+import { describe, it, expect } from "vitest";
 import { NextRequest } from "next/server";
 
-beforeAll(() => {
-  process.env["DATABASE_URL"] ??= "postgresql://basira:basira@localhost:5432/basira";
-  process.env["SOLANA_RPC_URL"] ??= "https://api.devnet.solana.com";
-  process.env["NODE_ENV"] = "test";
+Object.assign(process.env, {
+  DATABASE_URL: "postgresql://basira:basira@localhost:5432/basira",
+  SOLANA_RPC_URL: "https://api.devnet.solana.com",
+  NODE_ENV: "test",
 });
 
 describe("requireSiws", () => {
   it("rejects requests with no session cookie", async () => {
     const { requireSiws } = await import("../src/lib/auth");
     const req = new NextRequest("http://localhost/api/v1/x");
-    await expect(requireSiws(req)).rejects.toMatchObject({
-      code: "unauthorized",
-    });
+    await expect(requireSiws(req)).rejects.toMatchObject({ code: "unauthorized" });
   });
 
   it("rejects requests with an unknown cookie token", async () => {
@@ -21,9 +19,7 @@ describe("requireSiws", () => {
     const req = new NextRequest("http://localhost/api/v1/x", {
       headers: { cookie: "basira_session=does-not-exist" },
     });
-    await expect(requireSiws(req)).rejects.toMatchObject({
-      code: "unauthorized",
-    });
+    await expect(requireSiws(req)).rejects.toMatchObject({ code: "unauthorized" });
   });
 });
 
@@ -31,9 +27,7 @@ describe("requireApiKey", () => {
   it("rejects requests with no Authorization header", async () => {
     const { requireApiKey } = await import("../src/lib/auth");
     const req = new NextRequest("http://localhost/api/v1/x");
-    await expect(requireApiKey(req)).rejects.toMatchObject({
-      code: "unauthorized",
-    });
+    await expect(requireApiKey(req)).rejects.toMatchObject({ code: "unauthorized" });
   });
 
   it("rejects requests with an invalid bearer token", async () => {
@@ -41,9 +35,7 @@ describe("requireApiKey", () => {
     const req = new NextRequest("http://localhost/api/v1/x", {
       headers: { authorization: "Bearer not-a-real-key" },
     });
-    await expect(requireApiKey(req)).rejects.toMatchObject({
-      code: "unauthorized",
-    });
+    await expect(requireApiKey(req)).rejects.toMatchObject({ code: "unauthorized" });
   });
 });
 
@@ -59,8 +51,15 @@ describe("serialize", () => {
   });
   it("recurses into nested objects and arrays", async () => {
     const { serialize } = await import("../src/lib/serialize");
-    expect(
-      serialize({ items: [{ amount: 1n }, { amount: 2n }] }),
-    ).toEqual({ items: [{ amount: "1" }, { amount: "2" }] });
+    expect(serialize({ items: [{ amount: 1n }, { amount: 2n }] })).toEqual({
+      items: [{ amount: "1" }, { amount: "2" }],
+    });
+  });
+  it("converts PublicKey to base58 string", async () => {
+    const { serialize } = await import("../src/lib/serialize");
+    const { PublicKey } = await import("@solana/web3.js");
+    const pk = new PublicKey("8aE43P1sYxHqBZmKJhJfKqZqS3GmZG8vJgQvJM5R4mX");
+    const result = serialize({ wallet: pk });
+    expect(result.wallet).toBe("8aE43P1sYxHqBZmKJhJfKqZqS3GmZG8vJgQvJM5R4mX");
   });
 });
