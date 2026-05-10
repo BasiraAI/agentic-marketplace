@@ -1,0 +1,27 @@
+{
+  "name": "basira",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "web",
+    "daemon"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "daemon:dev": "npm run -w @basira/daemon dev",
+    "daemon:e2e": "npm run -w @basira/daemon e2e"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.3.0",
+    "globals": "^17.6.0",
+    "typescript-eslint": "^8.59.2"
+  }
+}

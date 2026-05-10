@@ -1,0 +1,42 @@
+{
+  "name": "@basira/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:migrate": "tsx scripts/db-migrate.ts",
+    "db:reset": "tsx scripts/db-reset.ts",
+    "devnet:fund": "tsx scripts/devnet-fund.ts",
+    "demo:e2e": "tsx scripts/demo-e2e.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "@aws-sdk/client-s3": "^3.726.1",
+    "@aws-sdk/s3-request-presigner": "^3.726.1",
+    "@coral-xyz/anchor": "^0.30.1",
+    "@solana/spl-token": "^0.4.9",
+    "@solana/web3.js": "^1.95.5",
+    "bcrypt": "^5.1.1",
+    "bs58": "^6.0.0",
+    "kysely": "^0.27.4",
+    "node-pg-migrate": "^7.9.1",
+    "pg": "^8.13.1",
+    "tweetnacl": "^1.0.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/node": "^22.9.0",
+    "@types/pg": "^8.11.10",
+    "anchor-bankrun": "^0.5.0",
+    "solana-bankrun": "^0.4.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  }
+}
