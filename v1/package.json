@@ -1,21 +1,27 @@
 {
   "name": "basira",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@9.15.4",
+  "workspaces": [
+    "shared",
+    "web",
+    "daemon"
+  ],
   "scripts": {
-    "lint": "pnpm -r lint",
-    "typecheck": "pnpm -r typecheck",
-    "test": "pnpm -r test"
+    "lint": "eslint .",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "daemon:dev": "npm run -w @basira/daemon dev",
+    "daemon:e2e": "npm run -w @basira/daemon e2e"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
-    "eslint-plugin-import": "^2.29.1",
-    "@typescript-eslint/eslint-plugin": "^7.8.0",
-    "@typescript-eslint/parser": "^7.8.0",
-    "typescript": "^5.4.5",
-    "tweetnacl": "^1.0.3",
-    "@solana/web3.js": "^1.91.1",
-    "@types/node": "^20.12.7"
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.3.0",
+    "globals": "^17.6.0",
+    "typescript-eslint": "^8.59.2"
   }
 }

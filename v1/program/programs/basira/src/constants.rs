@@ -1,20 +1,21 @@
 use anchor_lang::prelude::*;
 
-#[constant]
-pub const FEE_BPS: u16 = 500; // 5%
+pub const FEE_BPS: u16 = 500;
 
-#[constant]
-pub const AUTO_RELEASE_SECONDS: i64 = 86_400; // 24 hours
+pub const AUTO_RELEASE_SECONDS: i64 = 86_400;
 
-#[constant]
-pub const OFFER_RESPONSE_SECONDS: i64 = 60; // 60 seconds
+pub const OFFER_RESPONSE_SECONDS: i64 = 60;
 
-// Deploy-time constants. For v1 these are hardcoded per spec.
-// Dev keypairs live in keys/*.json (gitignored). Regenerate with: node scripts/keygen.mjs
-pub mod pubkeys {
-    use anchor_lang::prelude::{pubkey, Pubkey};
+pub const MIN_DEADLINE_BUFFER_SECONDS: i64 = 3_600;
 
-    pub const TREASURY: Pubkey = pubkey!("AYdAWWbvHKZeWgcSAzCqwMtCwGPhzw6uqieiYq7565Z5");
-    pub const ARBITRATOR_KEY: Pubkey = pubkey!("2KswvJ63ykEAqKQSUV4gLftaxcdEYPSLRnoJ1EgQ2Q4Z");
-    pub const KEEPER_PUBKEY: Pubkey = pubkey!("FGrPtosT4VUcu4WrTkHuekxbTSHJcKtsij1V8tcNNCZ7");
-}
+pub const MIN_REWARD_LAMPORTS: u64 = 10_000_000;
+
+pub const MIN_REWARD_USDC_BASE_UNITS: u64 = 1_000_000;
+
+pub const TREASURY: Pubkey = pubkey!("Bddo2ek21cs8SmArWa7c3GTu8VQnAiKzs7fc1T3AF2hc");
+
+pub const ARBITRATOR_KEY: Pubkey = pubkey!("5Gb5kQe83EEQoUgEWtLShUpidb1R589g6yC6V26ANhLR");
+
+pub const AGENT_SEED: &[u8] = b"agent";
+pub const TASK_SEED: &[u8] = b"task";
+pub const VAULT_SEED: &[u8] = b"vault";

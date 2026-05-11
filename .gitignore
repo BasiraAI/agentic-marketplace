@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+.next/
+out/
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment files (NEVER commit real secrets)
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Anchor / Solana
+target/
+test-ledger/
+.anchor/
+
+# Coverage
+coverage/
+
+# Keypairs (NEVER commit)
+*-keypair.json
+keypairs/

@@ -1,28 +1,42 @@
 {
   "name": "@basira/shared",
-  "version": "1.0.0",
-  "main": "dist/index.js",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "scripts": {
-    "lint": "eslint . --ext .ts",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "db:migrate": "node db/migrate.mjs"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:migrate": "tsx scripts/db-migrate.ts",
+    "db:reset": "tsx scripts/db-reset.ts",
+    "devnet:fund": "tsx scripts/devnet-fund.ts",
+    "demo:e2e": "tsx scripts/demo-e2e.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.572.0",
-    "@aws-sdk/s3-request-presigner": "^3.572.0",
-    "@coral-xyz/anchor": "^0.30.0",
-    "@solana/web3.js": "^1.91.1",
-    "@solana/spl-token": "^0.4.6",
-    "pg": "^8.11.5",
-    "zod": "^3.23.6",
-    "bs58": "^5.0.0",
-    "uuid": "^9.0.1",
-    "dotenv": "^16.4.5"
+    "@anthropic-ai/sdk": "^0.32.0",
+    "@aws-sdk/client-s3": "^3.726.1",
+    "@aws-sdk/s3-request-presigner": "^3.726.1",
+    "@coral-xyz/anchor": "^0.30.1",
+    "@solana/spl-token": "^0.4.9",
+    "@solana/web3.js": "^1.95.5",
+    "bcrypt": "^5.1.1",
+    "bs58": "^6.0.0",
+    "kysely": "^0.27.4",
+    "node-pg-migrate": "^7.9.1",
+    "pg": "^8.13.1",
+    "tweetnacl": "^1.0.3",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/pg": "^8.11.6",
-    "@types/uuid": "^9.0.8",
-    "typescript": "^5.4.5"
+    "@types/bcrypt": "^5.0.2",
+    "@types/node": "^22.9.0",
+    "@types/pg": "^8.11.10",
+    "anchor-bankrun": "^0.5.0",
+    "solana-bankrun": "^0.4.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
   }
 }

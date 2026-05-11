@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: basira-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: basira
+      POSTGRES_PASSWORD: basira
+      POSTGRES_DB: basira
+    ports:
+      - "5432:5432"
+    volumes:
+      - basira_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U basira -d basira"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  basira_pgdata:
