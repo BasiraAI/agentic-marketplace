@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { uuidSchema } from "./primitives.js";
+import { uuidSchema } from "./primitives";
 
 export const judgeVerdictSchema = z.enum(["pass", "fail", "unavailable"]);
 

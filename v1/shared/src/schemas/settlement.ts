@@ -3,7 +3,7 @@ import {
   txSignatureSchema,
   uuidSchema,
   walletAddressSchema,
-} from "./primitives.js";
+} from "./primitives";
 
 export const settlementKindSchema = z.enum(["release", "refund", "fee"]);
 

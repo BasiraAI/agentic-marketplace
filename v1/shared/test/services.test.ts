@@ -7,19 +7,19 @@ import { runner } from "node-pg-migrate";
 import nacl from "tweetnacl";
 import bs58 from "bs58";
 
-import { destroyDb } from "../src/db/index.js";
-import * as agentsDb from "../src/db/agents.js";
-import * as tasksDb from "../src/db/tasks.js";
-import * as deliverablesDb from "../src/db/deliverables.js";
-import * as judgeVerdictsDb from "../src/db/judge-verdicts.js";
-import * as sessionsDb from "../src/db/sessions.js";
+import { destroyDb } from "../src/db/index";
+import * as agentsDb from "../src/db/agents";
+import * as tasksDb from "../src/db/tasks";
+import * as deliverablesDb from "../src/db/deliverables";
+import * as judgeVerdictsDb from "../src/db/judge-verdicts";
+import * as sessionsDb from "../src/db/sessions";
 
 // Services under test
-import { preRegisterAgent, verifyWalletSignature } from "../src/services/agent.js";
-import { applyToBounty } from "../src/services/bounty.js";
-import { runJudge } from "../src/services/judge.js";
-import { verifySIWS, verifyApiKey } from "../src/services/auth.js";
-import * as noncesDb from "../src/db/nonces.js";
+import { preRegisterAgent, verifyWalletSignature } from "../src/services/agent";
+import { applyToBounty } from "../src/services/bounty";
+import { runJudge } from "../src/services/judge";
+import { verifySIWS, verifyApiKey } from "../src/services/auth";
+import * as noncesDb from "../src/db/nonces";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

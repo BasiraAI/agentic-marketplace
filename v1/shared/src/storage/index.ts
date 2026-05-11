@@ -1,2 +1,2 @@
-export { getPresignedUploadUrl } from "./presigned.js";
-export type { StorageObject } from "./types.js";
+export { getPresignedUploadUrl } from "./presigned";
+export type { StorageObject } from "./types";

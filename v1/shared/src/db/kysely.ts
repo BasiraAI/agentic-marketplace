@@ -1,6 +1,6 @@
 import { Kysely, PostgresDialect } from "kysely";
-import { getPool, resetPoolRef } from "./pool.js";
-import type { Database } from "./types.js";
+import { getPool, resetPoolRef } from "./pool";
+import type { Database } from "./types";
 
 let instance: Kysely<Database> | null = null;
 

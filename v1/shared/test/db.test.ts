@@ -17,7 +17,7 @@ import {
   settlementsDb,
   tasksDb,
   webhookDeliveriesDb,
-} from "../src/db/index.js";
+} from "../src/db/index";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

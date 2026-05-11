@@ -11,7 +11,7 @@ import {
   taskCreateInputSchema,
   walletAddressSchema,
   webhookEventSchema,
-} from "../src/schemas/index.js";
+} from "../src/schemas/index";
 
 const VALID_WALLET = "DaAcmKvC3PLL4avmjLnfF2uNuYKaFjNYmmhRKYiXbqWV";
 const VALID_WALLET_2 = "Bddo2ek21cs8SmArWa7c3GTu8VQnAiKzs7fc1T3AF2hc";

@@ -5,10 +5,10 @@ import {
   getAssociatedTokenAddressSync,
 } from "@solana/spl-token";
 import { Program } from "@coral-xyz/anchor";
-import type { Basira } from "../idl/basira.js";
-import { taskPda, vaultPda, agentPda, taskIdFromUuid } from "../pdas.js";
-import { TREASURY_ADDRESS, ARBITRATOR_ADDRESS } from "../constants.js";
-import { buildVersionedTx } from "./_tx.js";
+import type { Basira } from "../idl/basira";
+import { taskPda, vaultPda, agentPda, taskIdFromUuid } from "../pdas";
+import { TREASURY_ADDRESS, ARBITRATOR_ADDRESS } from "../constants";
+import { buildVersionedTx } from "./_tx";
 
 interface ResolveDisputeBase {
   taskIdUuid: string;

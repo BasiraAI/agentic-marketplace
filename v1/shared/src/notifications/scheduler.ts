@@ -1,8 +1,8 @@
-import type { WebhookDeliveryRecord } from "../db/webhook-deliveries.js";
+import type { WebhookDeliveryRecord } from "../db/webhook-deliveries";
 import {
   recordRetry,
   markPermanentlyFailed,
-} from "../db/webhook-deliveries.js";
+} from "../db/webhook-deliveries";
 
 const RETRY_DELAYS_MS = [1_000, 4_000, 16_000];
 const MAX_ATTEMPTS = RETRY_DELAYS_MS.length;

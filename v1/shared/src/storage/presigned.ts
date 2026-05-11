@@ -1,8 +1,8 @@
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { randomUUID } from "node:crypto";
-import type { PresignedUpload } from "./types.js";
-import { isMockMode, getS3Client, getBucket, getPublicBase } from "./client.js";
+import type { PresignedUpload } from "./types";
+import { isMockMode, getS3Client, getBucket, getPublicBase } from "./client";
 
 const MAX_SIZE_BYTES = 50 * 1024 * 1024; // 50 MB
 const TTL_SECONDS = 15 * 60; // 15 minutes

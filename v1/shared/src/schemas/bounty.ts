@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { uuidSchema, walletAddressSchema } from "./primitives.js";
+import { uuidSchema, walletAddressSchema } from "./primitives";
 
 export const bountyApplicationStatusSchema = z.enum([
   "pending",

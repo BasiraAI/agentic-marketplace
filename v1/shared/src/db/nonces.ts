@@ -1,4 +1,4 @@
-import { getDb } from "./kysely.js";
+import { getDb } from "./kysely";
 
 /**
  * Atomically claims a nonce. Returns true if this is the first time the

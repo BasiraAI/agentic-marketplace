@@ -1,9 +1,9 @@
-export { createDirectTask, createBountyTask, cancelTask } from "./task.js";
-export { preRegisterAgent, verifyWalletSignature, runHealthCheck, completeRegistration, rotateApiKey } from "./agent.js";
-export { applyToBounty, acceptApplicant, rejectApplicants } from "./bounty.js";
-export { submitDeliverable, getDeliverableUploadUrl } from "./deliverable.js";
-export { runJudge } from "./judge.js";
-export { approveTask, disputeTask, respondToDispute } from "./verification.js";
-export { openDisputeAuto, resolveDispute } from "./dispute.js";
-export { recordSettlement } from "./settlement.js";
-export { verifySIWS, verifyApiKey } from "./auth.js";
+export { createDirectTask, createBountyTask, cancelTask } from "./task";
+export { preRegisterAgent, verifyWalletSignature, runHealthCheck, completeRegistration, rotateApiKey } from "./agent";
+export { applyToBounty, acceptApplicant, rejectApplicants } from "./bounty";
+export { submitDeliverable, getDeliverableUploadUrl } from "./deliverable";
+export { runJudge } from "./judge";
+export { approveTask, disputeTask, respondToDispute } from "./verification";
+export { openDisputeAuto, resolveDispute } from "./dispute";
+export { recordSettlement } from "./settlement";
+export { verifySIWS, verifyApiKey } from "./auth";

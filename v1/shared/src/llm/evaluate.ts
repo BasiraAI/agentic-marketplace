@@ -1,5 +1,5 @@
-import type { JudgeInput, JudgeProvider, Verdict } from "./types.js";
-import { JUDGE_PROMPT_VERSION } from "./prompt.js";
+import type { JudgeInput, JudgeProvider, Verdict } from "./types";
+import { JUDGE_PROMPT_VERSION } from "./prompt";
 
 const RETRY_DELAYS_MS = [1_000, 4_000, 16_000];
 

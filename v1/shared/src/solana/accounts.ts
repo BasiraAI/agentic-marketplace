@@ -1,8 +1,8 @@
 import { PublicKey } from "@solana/web3.js";
 import { type BN } from "@coral-xyz/anchor";
-import { getConnection } from "./connection.js";
-import { getProgram } from "./program.js";
-import { agentPda, taskPda, taskIdFromUuid } from "./pdas.js";
+import { getConnection } from "./connection";
+import { getProgram } from "./program";
+import { agentPda, taskPda, taskIdFromUuid } from "./pdas";
 
 export interface AgentAccountData {
   wallet: PublicKey;

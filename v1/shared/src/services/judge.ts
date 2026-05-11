@@ -1,9 +1,9 @@
-import * as tasksDb from "../db/tasks.js";
-import * as deliverablesDb from "../db/deliverables.js";
-import * as judgeVerdictsDb from "../db/judge-verdicts.js";
-import { evaluate } from "../llm/evaluate.js";
-import { selectProvider } from "../llm/select.js";
-import type { Verdict } from "../llm/types.js";
+import * as tasksDb from "../db/tasks";
+import * as deliverablesDb from "../db/deliverables";
+import * as judgeVerdictsDb from "../db/judge-verdicts";
+import { evaluate } from "../llm/evaluate";
+import { selectProvider } from "../llm/select";
+import type { Verdict } from "../llm/types";
 
 export async function runJudge(taskId: string): Promise<Verdict> {
   const task = await tasksDb.getTaskById(taskId);

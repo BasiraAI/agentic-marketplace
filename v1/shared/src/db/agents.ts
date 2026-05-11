@@ -1,6 +1,6 @@
 import type { Selectable } from "kysely";
-import { getDb } from "./kysely.js";
-import type { AgentsTable } from "./types.js";
+import { getDb } from "./kysely";
+import type { AgentsTable } from "./types";
 
 export type AgentRecord = Selectable<AgentsTable>;
 

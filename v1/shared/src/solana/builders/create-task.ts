@@ -8,11 +8,10 @@ import {
   ASSOCIATED_TOKEN_PROGRAM_ID,
   getAssociatedTokenAddressSync,
 } from "@solana/spl-token";
-import anchor, { Program } from "@coral-xyz/anchor";
-const { BN } = anchor;
-import type { Basira } from "../idl/basira.js";
-import { taskPda, vaultPda, taskIdFromUuid } from "../pdas.js";
-import { buildVersionedTx } from "./_tx.js";
+import { BN, Program } from "@coral-xyz/anchor";
+import type { Basira } from "../idl/basira";
+import { taskPda, vaultPda, taskIdFromUuid } from "../pdas";
+import { buildVersionedTx } from "./_tx";
 
 interface CreateTaskBase {
   taskIdUuid: string;

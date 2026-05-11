@@ -1,6 +1,6 @@
 import type { Selectable } from "kysely";
-import { getDb } from "./kysely.js";
-import type { TasksTable } from "./types.js";
+import { getDb } from "./kysely";
+import type { TasksTable } from "./types";
 
 export type TaskRecord = Selectable<TasksTable>;
 

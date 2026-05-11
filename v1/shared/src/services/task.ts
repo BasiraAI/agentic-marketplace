@@ -1,17 +1,17 @@
 import { randomUUID } from "node:crypto";
 import { PublicKey } from "@solana/web3.js";
-import { taskCreateInputSchema } from "../schemas/task.js";
-import * as tasksDb from "../db/tasks.js";
-import { getConnection } from "../solana/connection.js";
-import { getProgram } from "../solana/program.js";
-import { taskIdFromUuid } from "../solana/pdas.js";
+import { taskCreateInputSchema } from "../schemas/task";
+import * as tasksDb from "../db/tasks";
+import { getConnection } from "../solana/connection";
+import { getProgram } from "../solana/program";
+import { taskIdFromUuid } from "../solana/pdas";
 import {
   buildCreateTaskSolTx,
   buildCreateTaskUsdcTx,
   buildCancelTaskSolTx,
   buildCancelTaskUsdcTx,
-} from "../solana/builders/index.js";
-import { USDC_MINT_DEVNET } from "../solana/constants.js";
+} from "../solana/builders/index";
+import { USDC_MINT_DEVNET } from "../solana/constants";
 import type { VersionedTransaction } from "@solana/web3.js";
 
 function usdcMint(): PublicKey {

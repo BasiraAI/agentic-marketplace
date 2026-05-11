@@ -1,8 +1,8 @@
 import { PublicKey, VersionedTransaction } from "@solana/web3.js";
 import { Program } from "@coral-xyz/anchor";
-import type { Basira } from "../idl/basira.js";
-import { taskPda, agentPda, taskIdFromUuid } from "../pdas.js";
-import { buildVersionedTx } from "./_tx.js";
+import type { Basira } from "../idl/basira";
+import { taskPda, agentPda, taskIdFromUuid } from "../pdas";
+import { buildVersionedTx } from "./_tx";
 
 export async function buildAssignAgentTx({
   taskIdUuid,

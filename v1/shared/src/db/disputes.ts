@@ -1,6 +1,6 @@
 import type { Selectable } from "kysely";
-import { getDb } from "./kysely.js";
-import type { DisputesTable } from "./types.js";
+import { getDb } from "./kysely";
+import type { DisputesTable } from "./types";
 
 export type DisputeRecord = Selectable<DisputesTable>;
 

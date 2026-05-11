@@ -1,7 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
-import type { JudgeInput, JudgeProvider, Verdict } from "../types.js";
-import { JUDGE_PROMPT_V1, JUDGE_PROMPT_VERSION } from "../prompt.js";
-import { judgeOutputSchema } from "../../schemas/judge.js";
+import type { JudgeInput, JudgeProvider, Verdict } from "../types";
+import { JUDGE_PROMPT_V1, JUDGE_PROMPT_VERSION } from "../prompt";
+import { judgeOutputSchema } from "../../schemas/judge";
 
 const DEFAULT_MODEL = "claude-sonnet-4-6";
 const MAX_TOKENS = 1024;

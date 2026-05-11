@@ -2,11 +2,11 @@ import { randomUUID } from "node:crypto";
 import { randomBytes } from "node:crypto";
 import bcrypt from "bcrypt";
 import bs58 from "bs58";
-import * as agentsDb from "../db/agents.js";
-import * as sessionsDb from "../db/sessions.js";
-import * as noncesDb from "../db/nonces.js";
-import { agentPreRegisterInputSchema } from "../schemas/agent.js";
-import { verifyEd25519Signature } from "../solana/sig.js";
+import * as agentsDb from "../db/agents";
+import * as sessionsDb from "../db/sessions";
+import * as noncesDb from "../db/nonces";
+import { agentPreRegisterInputSchema } from "../schemas/agent";
+import { verifyEd25519Signature } from "../solana/sig";
 
 const BCRYPT_ROUNDS = 10;
 const REGISTRATION_SESSION_TTL_MS = 30 * 60 * 1000; // 30 minutes

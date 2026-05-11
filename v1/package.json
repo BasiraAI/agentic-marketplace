@@ -8,6 +8,8 @@
     "daemon"
   ],
   "scripts": {
+    "dev": "powershell -ExecutionPolicy Bypass -NoProfile -File ./scripts/dev.ps1",
+    "stop": "powershell -ExecutionPolicy Bypass -NoProfile -File ./scripts/stop.ps1",
     "lint": "eslint .",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
@@ -17,6 +19,10 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "overrides": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

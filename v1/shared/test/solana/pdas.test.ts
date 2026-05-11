@@ -6,8 +6,8 @@ import {
   agentPda,
   taskPda,
   vaultPda,
-} from "../../src/solana/pdas.js";
-import { BASIRA_PROGRAM_ID } from "../../src/solana/program-id.js";
+} from "../../src/solana/pdas";
+import { BASIRA_PROGRAM_ID } from "../../src/solana/program-id";
 
 const PROGRAM_ID = new PublicKey(BASIRA_PROGRAM_ID);
 

@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
-import { signWebhookBody } from "./sign.js";
-import type { WebhookEvent, WebhookDispatchResult } from "./types.js";
+import { signWebhookBody } from "./sign";
+import type { WebhookEvent, WebhookDispatchResult } from "./types";
 
 const DISPATCH_TIMEOUT_MS = 10_000;
 

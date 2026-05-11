@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { urlSchema, uuidSchema, walletAddressSchema } from "./primitives.js";
+import { urlSchema, uuidSchema, walletAddressSchema } from "./primitives";
 
 export const deliverableSubmitInputSchema = z.object({
   taskId: uuidSchema,

@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createServer, type IncomingMessage, type Server } from "node:http";
-import { signWebhookBody, verifyWebhookSignature } from "../src/notifications/sign.js";
-import { dispatchWebhook } from "../src/notifications/dispatch.js";
+import { signWebhookBody, verifyWebhookSignature } from "../src/notifications/sign";
+import { dispatchWebhook } from "../src/notifications/dispatch";
 
 const SECRET = "test-webhook-secret-abc";
 

@@ -1,6 +1,6 @@
 import { PublicKey } from "@solana/web3.js";
-import { BASIRA_PROGRAM_ID } from "./program-id.js";
-import { AGENT_SEED, TASK_SEED, VAULT_SEED } from "./constants.js";
+import { BASIRA_PROGRAM_ID } from "./program-id";
+import { AGENT_SEED, TASK_SEED, VAULT_SEED } from "./constants";
 
 const programId = new PublicKey(BASIRA_PROGRAM_ID);
 

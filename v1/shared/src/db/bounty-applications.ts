@@ -1,6 +1,6 @@
 import type { Selectable } from "kysely";
-import { getDb } from "./kysely.js";
-import type { BountyApplicationsTable } from "./types.js";
+import { getDb } from "./kysely";
+import type { BountyApplicationsTable } from "./types";
 
 export type BountyApplicationRecord = Selectable<BountyApplicationsTable>;
 

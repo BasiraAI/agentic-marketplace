@@ -1,6 +1,6 @@
 import type { Selectable } from "kysely";
-import { getDb } from "./kysely.js";
-import type { WebhookDeliveriesTable } from "./types.js";
+import { getDb } from "./kysely";
+import type { WebhookDeliveriesTable } from "./types";
 
 export type WebhookDeliveryRecord = Selectable<WebhookDeliveriesTable>;
 

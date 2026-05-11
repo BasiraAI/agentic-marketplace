@@ -1,4 +1,4 @@
-import * as settlementsDb from "../db/settlements.js";
+import * as settlementsDb from "../db/settlements";
 
 export async function recordSettlement(input: {
   taskId: string;

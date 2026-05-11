@@ -1,10 +1,10 @@
 import { randomUUID } from "node:crypto";
 import bcrypt from "bcrypt";
 import bs58 from "bs58";
-import * as agentsDb from "../db/agents.js";
-import * as sessionsDb from "../db/sessions.js";
-import * as noncesDb from "../db/nonces.js";
-import { verifyEd25519Signature, buildSiwsMessage } from "../solana/sig.js";
+import * as agentsDb from "../db/agents";
+import * as sessionsDb from "../db/sessions";
+import * as noncesDb from "../db/nonces";
+import { verifyEd25519Signature, buildSiwsMessage } from "../solana/sig";
 
 const SIWS_SESSION_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 

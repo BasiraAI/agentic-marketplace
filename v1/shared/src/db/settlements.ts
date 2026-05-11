@@ -1,4 +1,4 @@
-import { getDb } from "./kysely.js";
+import { getDb } from "./kysely";
 
 export interface RecordSettlementInput {
   taskId: string;

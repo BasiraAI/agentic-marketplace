@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getPresignedUploadUrl } from "../src/storage/presigned.js";
+import { getPresignedUploadUrl } from "../src/storage/presigned";
 
 // All tests run in mock mode (no R2_ENDPOINT set).
 

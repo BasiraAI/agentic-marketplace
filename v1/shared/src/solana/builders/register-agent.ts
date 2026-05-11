@@ -1,8 +1,8 @@
 import { PublicKey, SystemProgram, VersionedTransaction } from "@solana/web3.js";
 import { Program, Idl } from "@coral-xyz/anchor";
-import type { Basira } from "../idl/basira.js";
-import { agentPda } from "../pdas.js";
-import { buildVersionedTx } from "./_tx.js";
+import type { Basira } from "../idl/basira";
+import { agentPda } from "../pdas";
+import { buildVersionedTx } from "./_tx";
 
 export async function buildRegisterAgentTx({
   wallet,

@@ -1,10 +1,10 @@
 import { PublicKey } from "@solana/web3.js";
 import type { VersionedTransaction } from "@solana/web3.js";
-import * as bountyApplicationsDb from "../db/bounty-applications.js";
-import * as tasksDb from "../db/tasks.js";
-import { getConnection } from "../solana/connection.js";
-import { getProgram } from "../solana/program.js";
-import { buildAssignAgentTx } from "../solana/builders/index.js";
+import * as bountyApplicationsDb from "../db/bounty-applications";
+import * as tasksDb from "../db/tasks";
+import { getConnection } from "../solana/connection";
+import { getProgram } from "../solana/program";
+import { buildAssignAgentTx } from "../solana/builders/index";
 
 export async function applyToBounty(
   input: { taskId: string; message: string },

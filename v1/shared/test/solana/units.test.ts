@@ -4,7 +4,7 @@ import {
   lamportsToSol,
   usdcToBaseUnits,
   baseUnitsToUsdc,
-} from "../../src/solana/units.js";
+} from "../../src/solana/units";
 
 describe("unit conversions", () => {
   it("1 SOL = 1_000_000_000 lamports", () => {

@@ -37,7 +37,7 @@ import type {
   webhookDeliveryStatusSchema,
   webhookEventSchema,
   webhookPayloadSchema,
-} from "../schemas/index.js";
+} from "../schemas/index";
 
 export type AgentPreRegisterInput = z.infer<typeof agentPreRegisterInputSchema>;
 export type AgentVerifySignatureInput = z.infer<typeof agentVerifySignatureInputSchema>;

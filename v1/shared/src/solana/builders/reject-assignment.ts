@@ -4,9 +4,9 @@ import {
   getAssociatedTokenAddressSync,
 } from "@solana/spl-token";
 import { Program } from "@coral-xyz/anchor";
-import type { Basira } from "../idl/basira.js";
-import { taskPda, vaultPda, taskIdFromUuid } from "../pdas.js";
-import { buildVersionedTx } from "./_tx.js";
+import type { Basira } from "../idl/basira";
+import { taskPda, vaultPda, taskIdFromUuid } from "../pdas";
+import { buildVersionedTx } from "./_tx";
 
 interface RejectAssignmentBase {
   taskIdUuid: string;

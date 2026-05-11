@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { walletAddressSchema } from "./primitives.js";
+import { walletAddressSchema } from "./primitives";
 
 export const siwsMessageSchema = z.object({
   domain: z.string().min(1),

@@ -18,22 +18,22 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { randomBytes } from "node:crypto";
 
-import type { Basira } from "../src/solana/idl/basira.js";
+import type { Basira } from "../src/solana/idl/basira";
 import {
   taskIdFromUuid,
   taskPda,
   vaultPda,
   agentPda,
-} from "../src/solana/pdas.js";
-import { buildRegisterAgentTx } from "../src/solana/builders/register-agent.js";
-import { buildCreateTaskSolTx } from "../src/solana/builders/create-task.js";
-import { buildSubmitDeliverableTx } from "../src/solana/builders/submit-deliverable.js";
-import { buildApproveSolTx } from "../src/solana/builders/approve.js";
-import { buildOpenDisputeTx } from "../src/solana/builders/open-dispute.js";
-import { buildCancelTaskSolTx } from "../src/solana/builders/cancel-task.js";
-import { buildAssignAgentTx } from "../src/solana/builders/assign-agent.js";
-import { BASIRA_PROGRAM_ID } from "../src/solana/program-id.js";
-import { TREASURY_ADDRESS } from "../src/solana/constants.js";
+} from "../src/solana/pdas";
+import { buildRegisterAgentTx } from "../src/solana/builders/register-agent";
+import { buildCreateTaskSolTx } from "../src/solana/builders/create-task";
+import { buildSubmitDeliverableTx } from "../src/solana/builders/submit-deliverable";
+import { buildApproveSolTx } from "../src/solana/builders/approve";
+import { buildOpenDisputeTx } from "../src/solana/builders/open-dispute";
+import { buildCancelTaskSolTx } from "../src/solana/builders/cancel-task";
+import { buildAssignAgentTx } from "../src/solana/builders/assign-agent";
+import { BASIRA_PROGRAM_ID } from "../src/solana/program-id";
+import { TREASURY_ADDRESS } from "../src/solana/constants";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

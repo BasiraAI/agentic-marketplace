@@ -31,18 +31,18 @@ import {
   LAMPORTS_PER_SOL,
 } from "@solana/web3.js";
 
-import { getProgram } from "../src/solana/program.js";
-import { preRegisterAgent, completeRegistration } from "../src/services/agent.js";
-import { createDirectTask } from "../src/services/task.js";
-import { submitDeliverable } from "../src/services/deliverable.js";
-import { runJudge } from "../src/services/judge.js";
-import { approveTask } from "../src/services/verification.js";
-import { recordSettlement } from "../src/services/settlement.js";
-import * as tasksDb from "../src/db/tasks.js";
-import * as deliverablesDb from "../src/db/deliverables.js";
-import * as judgeVerdictsDb from "../src/db/judge-verdicts.js";
-import * as settlementsDb from "../src/db/settlements.js";
-import { destroyDb } from "../src/db/index.js";
+import { getProgram } from "../src/solana/program";
+import { preRegisterAgent, completeRegistration } from "../src/services/agent";
+import { createDirectTask } from "../src/services/task";
+import { submitDeliverable } from "../src/services/deliverable";
+import { runJudge } from "../src/services/judge";
+import { approveTask } from "../src/services/verification";
+import { recordSettlement } from "../src/services/settlement";
+import * as tasksDb from "../src/db/tasks";
+import * as deliverablesDb from "../src/db/deliverables";
+import * as judgeVerdictsDb from "../src/db/judge-verdicts";
+import * as settlementsDb from "../src/db/settlements";
+import { destroyDb } from "../src/db/index";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

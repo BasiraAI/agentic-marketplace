@@ -6,7 +6,7 @@ import {
   usdcBaseUnitsSchema,
   uuidSchema,
   walletAddressSchema,
-} from "./primitives.js";
+} from "./primitives";
 
 export const taskModeSchema = z.enum(["direct", "bounty"]);
 

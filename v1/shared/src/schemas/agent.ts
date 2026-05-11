@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { urlSchema, walletAddressSchema } from "./primitives.js";
+import { urlSchema, walletAddressSchema } from "./primitives";
 
 export const agentStatusSchema = z.enum(["active", "inactive"]);
 

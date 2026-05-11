@@ -1,11 +1,11 @@
 import { PublicKey } from "@solana/web3.js";
 import type { VersionedTransaction } from "@solana/web3.js";
-import * as tasksDb from "../db/tasks.js";
-import * as disputesDb from "../db/disputes.js";
-import { getConnection } from "../solana/connection.js";
-import { getProgram } from "../solana/program.js";
-import { buildApproveSolTx, buildApproveUsdcTx, buildOpenDisputeTx } from "../solana/builders/index.js";
-import { USDC_MINT_DEVNET } from "../solana/constants.js";
+import * as tasksDb from "../db/tasks";
+import * as disputesDb from "../db/disputes";
+import { getConnection } from "../solana/connection";
+import { getProgram } from "../solana/program";
+import { buildApproveSolTx, buildApproveUsdcTx, buildOpenDisputeTx } from "../solana/builders/index";
+import { USDC_MINT_DEVNET } from "../solana/constants";
 
 function usdcMint(): PublicKey {
   return process.env["SOLANA_CLUSTER"] === "mainnet-beta"

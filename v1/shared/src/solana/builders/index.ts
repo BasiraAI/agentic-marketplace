@@ -1,20 +1,20 @@
-export { buildRegisterAgentTx } from "./register-agent.js";
-export { buildCreateTaskSolTx, buildCreateTaskUsdcTx } from "./create-task.js";
-export { buildCancelTaskSolTx, buildCancelTaskUsdcTx } from "./cancel-task.js";
-export { buildAssignAgentTx } from "./assign-agent.js";
+export { buildRegisterAgentTx } from "./register-agent";
+export { buildCreateTaskSolTx, buildCreateTaskUsdcTx } from "./create-task";
+export { buildCancelTaskSolTx, buildCancelTaskUsdcTx } from "./cancel-task";
+export { buildAssignAgentTx } from "./assign-agent";
 export {
   buildRejectAssignmentSolTx,
   buildRejectAssignmentUsdcTx,
-} from "./reject-assignment.js";
-export { buildSubmitDeliverableTx } from "./submit-deliverable.js";
-export { buildApproveSolTx, buildApproveUsdcTx } from "./approve.js";
+} from "./reject-assignment";
+export { buildSubmitDeliverableTx } from "./submit-deliverable";
+export { buildApproveSolTx, buildApproveUsdcTx } from "./approve";
 export {
   buildClaimAfterTimeoutSolTx,
   buildClaimAfterTimeoutUsdcTx,
-} from "./claim-after-timeout.js";
-export { buildOpenDisputeTx } from "./open-dispute.js";
+} from "./claim-after-timeout";
+export { buildOpenDisputeTx } from "./open-dispute";
 export {
   buildResolveDisputeSolTx,
   buildResolveDisputeUsdcTx,
-} from "./resolve-dispute.js";
-export { buildExpireTaskSolTx, buildExpireTaskUsdcTx } from "./expire-task.js";
+} from "./resolve-dispute";
+export { buildExpireTaskSolTx, buildExpireTaskUsdcTx } from "./expire-task";

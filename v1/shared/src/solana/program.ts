@@ -3,8 +3,8 @@ import { Connection, PublicKey, Keypair } from "@solana/web3.js";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
-import type { Basira } from "./idl/basira.js";
-import { BASIRA_PROGRAM_ID } from "./program-id.js";
+import type { Basira } from "./idl/basira";
+import { BASIRA_PROGRAM_ID } from "./program-id";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

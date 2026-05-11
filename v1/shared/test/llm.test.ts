@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { evaluate } from "../src/llm/evaluate.js";
-import { MockJudgeProvider } from "../src/llm/providers/mock.js";
-import { JUDGE_PROMPT_VERSION } from "../src/llm/prompt.js";
-import type { JudgeInput, JudgeProvider } from "../src/llm/types.js";
+import { evaluate } from "../src/llm/evaluate";
+import { MockJudgeProvider } from "../src/llm/providers/mock";
+import { JUDGE_PROMPT_VERSION } from "../src/llm/prompt";
+import type { JudgeInput, JudgeProvider } from "../src/llm/types";
 
 const BASE_INPUT: JudgeInput = {
   taskId: "test-task-1",

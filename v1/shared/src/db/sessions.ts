@@ -1,6 +1,6 @@
 import type { Selectable } from "kysely";
-import { getDb } from "./kysely.js";
-import type { SessionsTable } from "./types.js";
+import { getDb } from "./kysely";
+import type { SessionsTable } from "./types";
 
 export type SessionRecord = Selectable<SessionsTable>;
 

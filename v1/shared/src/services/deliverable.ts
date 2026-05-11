@@ -1,13 +1,13 @@
 import { PublicKey } from "@solana/web3.js";
 import type { VersionedTransaction } from "@solana/web3.js";
-import * as deliverablesDb from "../db/deliverables.js";
-import * as tasksDb from "../db/tasks.js";
-import { deliverableSubmitInputSchema, presignedUploadRequestSchema } from "../schemas/deliverable.js";
-import { getPresignedUploadUrl as storagePresignedUrl } from "../storage/presigned.js";
-import { getConnection } from "../solana/connection.js";
-import { getProgram } from "../solana/program.js";
-import { buildSubmitDeliverableTx } from "../solana/builders/index.js";
-import type { PresignedUpload } from "../storage/types.js";
+import * as deliverablesDb from "../db/deliverables";
+import * as tasksDb from "../db/tasks";
+import { deliverableSubmitInputSchema, presignedUploadRequestSchema } from "../schemas/deliverable";
+import { getPresignedUploadUrl as storagePresignedUrl } from "../storage/presigned";
+import { getConnection } from "../solana/connection";
+import { getProgram } from "../solana/program";
+import { buildSubmitDeliverableTx } from "../solana/builders/index";
+import type { PresignedUpload } from "../storage/types";
 
 export async function getDeliverableUploadUrl(
   rawInput: unknown,

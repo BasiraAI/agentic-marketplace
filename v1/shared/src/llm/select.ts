@@ -1,6 +1,7 @@
-import type { JudgeProvider } from "./types.js";
-import { MockJudgeProvider } from "./providers/mock.js";
-import { AnthropicJudgeProvider } from "./providers/anthropic.js";
+import type { JudgeProvider } from "./types";
+import { MockJudgeProvider } from "./providers/mock";
+import { AnthropicJudgeProvider } from "./providers/anthropic";
+import { GeminiJudgeProvider } from "./providers/gemini";
 
 export function selectProvider(): JudgeProvider {
   const name = process.env["LLM_PROVIDER"] ?? "mock";
@@ -9,6 +10,8 @@ export function selectProvider(): JudgeProvider {
       return new MockJudgeProvider();
     case "anthropic":
       return new AnthropicJudgeProvider();
+    case "gemini":
+      return new GeminiJudgeProvider();
     default:
       throw new Error(`Unknown LLM_PROVIDER: "${name}"`);
   }

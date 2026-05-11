@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { urlSchema, uuidSchema, walletAddressSchema } from "./primitives.js";
+import { urlSchema, uuidSchema, walletAddressSchema } from "./primitives";
 
 export const disputeRulingSchema = z.enum(["agent", "poster"]);
 
