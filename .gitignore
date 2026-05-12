@@ -1,39 +1,56 @@
-# Dependencies
+# --- dependencies ---
 node_modules/
+.pnpm-store/
 
-# Build output
+# --- build output ---
 dist/
 build/
-.next/
 out/
-
-# TypeScript
 *.tsbuildinfo
 
-# Environment files (NEVER commit real secrets)
+# --- next.js ---
+web/.next/
+web/out/
+web/next-env.d.ts
+
+# --- anchor / solana / rust ---
+program/target/
+program/.anchor/
+program/test-ledger/
+**/*.rs.bk
+Cargo.lock.bak
+
+# --- env / secrets ---
 .env
 .env.local
 .env.*.local
 !.env.example
 
-# Logs
+# --- keypairs (NEVER commit) ---
+devnet.json
+*-keypair.json
+verifier-keypair.json
+program/program-keypair.json
+keys/
+keypairs/
+
+# --- logs ---
 *.log
 npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
 
-# IDE
-.vscode/
-.idea/
-*.swp
+# --- editors / OS ---
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 
-# Anchor / Solana
-target/
-test-ledger/
-.anchor/
-
-# Coverage
+# --- coverage / test artifacts ---
 coverage/
+.nyc_output/
 
-# Keypairs (NEVER commit)
-*-keypair.json
-keypairs/
+# --- claude code worktrees (local only) ---
+.claude/worktrees/
