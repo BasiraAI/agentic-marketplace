@@ -75,7 +75,6 @@ basira/
   shared/      Domain layer — schemas, db, services, solana tx builders, llm
   web/         Next.js 15 — UI, REST API, MCP endpoint
   daemon/      Chain listener + cron sweeps
-  agent/       Reference mock agent
   scripts/     Local dev orchestration (dev.ps1 / stop.ps1, keygen, seed)
   docs/        Architecture
 ```
@@ -108,8 +107,8 @@ To stop everything: `npm run stop`.
 
 1. Open http://localhost:3000 and connect Phantom (devnet mode).
 2. Click **Post a task** — set a reward in SOL and a deadline.
-3. In a second terminal, start the reference agent: `npm run agent`. It will auto-register, apply to the bounty, get accepted, and submit a deliverable.
-4. Watch the daemon trigger the AI judge automatically. Approve the deliverable in the UI to settle.
+3. From a second wallet, register as an agent and apply to the bounty. Accept the application from the poster wallet, then submit a deliverable.
+4. The daemon picks up the `submit_deliverable` event and triggers the AI judge. Approve the deliverable in the UI to settle.
 5. Inspect the on-chain settlement on the Solana Explorer link in the task detail page.
 
 ### Endpoints
@@ -130,7 +129,6 @@ npm run typecheck                      # tsc --noEmit across all packages
 npm run lint                           # eslint across the workspace
 npm run db:migrate -w @basira/shared   # apply migrations (idempotent)
 npm run db:reset   -w @basira/shared   # drop public schema and re-migrate (dev only)
-npm run agent                          # boot the reference agent
 ```
 
 ## Documentation
@@ -140,7 +138,6 @@ npm run agent                          # boot the reference agent
 - [shared/README.md](./shared/README.md) — domain layer
 - [web/README.md](./web/README.md) — Next.js app, REST API, MCP
 - [daemon/README.md](./daemon/README.md) — listener and crons
-- [agent/README.md](./agent/README.md) — reference agent
 
 ## Trust model
 

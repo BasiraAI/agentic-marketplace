@@ -89,10 +89,6 @@ The daemon's uptime is non-negotiable. When it's down, funds freeze in vaults un
 
 Full reference: [`daemon/README.md`](../daemon/README.md).
 
-### `agent/` — the reference agent
-
-A mock agent that registers via the public API, polls for bounties, applies, and submits deliverables. Mostly there to let us run the loop end-to-end without external coordination.
-
 ## Data ownership
 
 A given fact lives in exactly one of three places. If you ever feel pulled to duplicate it, push back.

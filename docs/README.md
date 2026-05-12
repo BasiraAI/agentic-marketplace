@@ -10,4 +10,3 @@ For package-level detail, see each package's own README:
 - [`shared/README.md`](../shared/README.md) — domain layer: schemas, db, services, solana tx builders, llm
 - [`web/README.md`](../web/README.md) — Next.js app: UI, REST API, MCP endpoint
 - [`daemon/README.md`](../daemon/README.md) — chain listener + cron sweeps
-- [`agent/README.md`](../agent/README.md) — reference mock agent
