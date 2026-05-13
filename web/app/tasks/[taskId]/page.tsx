@@ -35,6 +35,9 @@ type TaskDetail = {
     message: string;
     status: string;
     created_at: string;
+    agent_name: string | null;
+    agent_capability_tags: string[];
+    agent_joined_at: string | null;
   }>;
   deliverable: {
     content_text: string | null;
@@ -53,6 +56,14 @@ type TaskDetail = {
     ruling: string | null;
     opened_at: string | null;
   } | null;
+  settlements: Array<{
+    kind: string;
+    recipientWallet: string;
+    currency: string;
+    amount: string;
+    txSignature: string;
+    createdAt: string;
+  }>;
 };
 
 export default function TaskDetailPage({ params }: { params: Promise<{ taskId: string }> }) {
@@ -79,6 +90,8 @@ export default function TaskDetailPage({ params }: { params: Promise<{ taskId: s
 
   useEffect(() => {
     refresh();
+    const id = setInterval(refresh, 4000);
+    return () => clearInterval(id);
   }, [refresh]);
 
   if (error) {
@@ -96,7 +109,7 @@ export default function TaskDetailPage({ params }: { params: Promise<{ taskId: s
 
   if (!data) return <p className="text-gray-500">Loading…</p>;
 
-  const { task, applications, deliverable, verdict, dispute } = data;
+  const { task, applications, deliverable, verdict, dispute, settlements } = data;
 
   const isPoster = wallet === task.poster_wallet;
   const isAssignedAgent = wallet !== null && wallet === task.assigned_agent;
@@ -126,7 +139,14 @@ export default function TaskDetailPage({ params }: { params: Promise<{ taskId: s
     if (!res.ok) throw new Error(json.error?.message ?? "Request failed");
     if (json.unsignedTx) {
       setActionStatus("Sign in your wallet…");
-      await submitFromBase64(json.unsignedTx);
+      const sig = await submitFromBase64(json.unsignedTx);
+      if (json.isApprove) {
+        await fetch(`/api/v1/tasks/${json.taskId ?? taskId}/confirm-settlement`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ txSignature: sig }),
+        });
+      }
       setActionStatus("Confirmed ✓");
     } else {
       setActionStatus("Done ✓");
@@ -253,33 +273,52 @@ export default function TaskDetailPage({ params }: { params: Promise<{ taskId: s
         <Section title={`Applications (${applications.length})`}>
           <div className="space-y-3">
             {applications.map((a) => (
-              <div key={a.id} className="bg-gray-950 border border-gray-800 rounded-lg p-3">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-sm">{shortenWallet(a.agent_wallet)}</span>
-                  <div className="flex items-center gap-2">
-                    <span className={`text-xs px-2 py-0.5 rounded border ${statusBadgeColor(a.status)}`}>
-                      {a.status}
-                    </span>
-                    {isPoster && task.status === "created" && a.status === "pending" && (
-                      <button
-                        onClick={() =>
-                          withAction(() =>
-                            postAndSign(
-                              `/api/v1/bounties/${task.task_id}/accept`,
-                              { "X-Poster-Wallet": wallet! },
-                              { applicationId: a.id },
-                            ),
-                          )
-                        }
-                        disabled={actionBusy}
-                        className="text-xs px-3 py-1 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-800 text-white rounded transition"
-                      >
-                        Accept
-                      </button>
+              <div key={a.id} className="bg-gray-950 border border-gray-800 rounded-lg p-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-semibold text-white">
+                        {a.agent_name ?? shortenWallet(a.agent_wallet)}
+                      </span>
+                      <span className={`text-xs px-2 py-0.5 rounded border ${statusBadgeColor(a.status)}`}>
+                        {a.status}
+                      </span>
+                    </div>
+                    <span className="text-xs font-mono text-gray-500">{shortenWallet(a.agent_wallet)}</span>
+                    {a.agent_joined_at && (
+                      <span className="text-xs text-gray-500 ml-2">
+                        · member since {new Date(a.agent_joined_at).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
+                      </span>
                     )}
+                    {a.agent_capability_tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {a.agent_capability_tags.map((tag) => (
+                          <span key={tag} className="text-xs px-2 py-0.5 bg-gray-800 text-gray-400 rounded-full">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    <p className="text-sm text-gray-300 mt-3 italic">"{a.message}"</p>
                   </div>
+                  {isPoster && task.status === "created" && a.status === "pending" && (
+                    <button
+                      onClick={() =>
+                        withAction(() =>
+                          postAndSign(
+                            `/api/v1/bounties/${task.task_id}/accept`,
+                            { "X-Poster-Wallet": wallet! },
+                            { applicationId: a.id },
+                          ),
+                        )
+                      }
+                      disabled={actionBusy}
+                      className="shrink-0 text-xs px-3 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-800 text-white rounded transition"
+                    >
+                      Accept
+                    </button>
+                  )}
                 </div>
-                <p className="text-sm text-gray-300 mt-2">{a.message}</p>
               </div>
             ))}
           </div>
@@ -289,9 +328,21 @@ export default function TaskDetailPage({ params }: { params: Promise<{ taskId: s
       {deliverable && (
         <Section title="Deliverable">
           {deliverable.content_text && (
-            <pre className="bg-gray-950 border border-gray-800 rounded-md p-3 text-sm whitespace-pre-wrap text-gray-300">
-              {deliverable.content_text}
-            </pre>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-gray-500 font-mono">content.csv</span>
+                <a
+                  href={`data:text/csv;charset=utf-8,${encodeURIComponent(deliverable.content_text)}`}
+                  download="deliverable.csv"
+                  className="text-xs px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded transition"
+                >
+                  Download CSV
+                </a>
+              </div>
+              <pre className="bg-gray-950 border border-gray-800 rounded-md p-3 text-sm whitespace-pre-wrap text-gray-300 max-h-64 overflow-auto">
+                {deliverable.content_text}
+              </pre>
+            </div>
           )}
           {deliverable.file_urls && deliverable.file_urls.length > 0 && (
             <ul className="mt-2 space-y-1 text-sm">
@@ -354,6 +405,38 @@ export default function TaskDetailPage({ params }: { params: Promise<{ taskId: s
               <span className="font-semibold capitalize">{dispute.ruling}</span>
             </p>
           )}
+        </Section>
+      )}
+
+      {settlements && settlements.length > 0 && (
+        <Section title="On-chain settlements">
+          <div className="space-y-3">
+            {settlements.map((s) => (
+              <div key={s.txSignature + s.kind} className="bg-gray-950 border border-gray-800 rounded-lg p-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div>
+                    <span className="text-xs uppercase tracking-wider text-gray-500 mr-2">{s.kind}</span>
+                    <span className="text-sm font-mono text-gray-300">
+                      {s.recipientWallet.slice(0, 6)}…{s.recipientWallet.slice(-4)}
+                    </span>
+                  </div>
+                  <span className="text-sm font-mono font-semibold text-emerald-300">
+                    {s.currency === "SOL"
+                      ? (Number(s.amount) / 1e9).toFixed(4) + " SOL"
+                      : (Number(s.amount) / 1e6).toFixed(2) + " USDC"}
+                  </span>
+                </div>
+                <a
+                  href={`https://explorer.solana.com/tx/${s.txSignature}?cluster=devnet`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 block text-xs text-blue-400 hover:text-blue-300 hover:underline font-mono truncate"
+                >
+                  {s.txSignature}
+                </a>
+              </div>
+            ))}
+          </div>
         </Section>
       )}
     </div>

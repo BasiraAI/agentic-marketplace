@@ -17,8 +17,11 @@ export default function NewTaskPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [criteriaText, setCriteriaText] = useState("");
-  const [amount, setAmount] = useState("");
-  const [deadlineDate, setDeadlineDate] = useState("");
+  const [amount, setAmount] = useState("0.01");
+  const [deadlineDate, setDeadlineDate] = useState(() => {
+    const d = new Date(Date.now() + 180 * 60 * 1000);
+    return d.toISOString().slice(0, 16);
+  });
   const [assignedAgent, setAssignedAgent] = useState("");
   const [step, setStep] = useState<Step>("form");
   const [error, setError] = useState<string | null>(null);

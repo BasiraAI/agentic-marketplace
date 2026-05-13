@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { wrap } from "@/lib/handler";
 import { serialize } from "@/lib/serialize";
-import { submitDeliverable, getConnection } from "@basira/shared";
+import { submitDeliverable, getLatestBlockhashWithRetry } from "@basira/shared";
 
 export const POST = wrap(async (
   req: NextRequest,
@@ -19,8 +19,7 @@ export const POST = wrap(async (
     );
   }
 
-  const conn = getConnection();
-  const { blockhash } = await conn.getLatestBlockhash();
+  const blockhash = await getLatestBlockhashWithRetry();
 
   const result = await submitDeliverable(
     {

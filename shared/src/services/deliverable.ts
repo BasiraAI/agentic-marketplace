@@ -63,5 +63,10 @@ export async function submitDeliverable(
     fileUrls: input.fileUrls,
   });
 
+  await deliverablesDb.confirmDeliverable(deliverable.id);
+  await tasksDb.transitionStatus(input.taskId, "assigned", "submitted", {
+    submitted_at: new Date(),
+  });
+
   return { unsignedTx: tx, deliverableId: deliverable.id };
 }

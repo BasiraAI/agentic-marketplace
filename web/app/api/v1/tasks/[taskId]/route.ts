@@ -8,6 +8,8 @@ import {
   deliverablesDb,
   judgeVerdictsDb,
   disputesDb,
+  settlementsDb,
+  agentsDb,
 } from "@basira/shared";
 
 export const GET = wrap(async (
@@ -24,14 +26,27 @@ export const GET = wrap(async (
     );
   }
 
-  const [applications, deliverable, verdict, dispute] = await Promise.all([
+  const [rawApplications, deliverable, verdict, dispute, settlements] = await Promise.all([
     bountyApplicationsDb.listApplicationsForTask(taskId).catch(() => []),
     deliverablesDb.getLatestForTask(taskId).catch(() => null),
     judgeVerdictsDb.getLatestVerdictForTask(taskId).catch(() => null),
     disputesDb.getOpenDisputeForTask(taskId).catch(() => null),
+    settlementsDb.listSettlementsForTask(taskId).catch(() => []),
   ]);
 
+  const applications = await Promise.all(
+    rawApplications.map(async (a) => {
+      const agent = await agentsDb.getAgentByWallet(a.agent_wallet).catch(() => undefined);
+      return {
+        ...a,
+        agent_name: agent?.name ?? null,
+        agent_capability_tags: agent?.capability_tags ?? [],
+        agent_joined_at: agent?.created_at ?? null,
+      };
+    }),
+  );
+
   return NextResponse.json(
-    serialize({ task, applications, deliverable, verdict, dispute }),
+    serialize({ task, applications, deliverable, verdict, dispute, settlements }),
   );
 });

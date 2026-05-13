@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { wrap } from "@/lib/handler";
 import { serialize } from "@/lib/serialize";
-import { approveTask, getConnection } from "@basira/shared";
+import { approveTask, getLatestBlockhashWithRetry } from "@basira/shared";
 
 export const POST = wrap(async (
   req: NextRequest,
@@ -17,9 +17,8 @@ export const POST = wrap(async (
     );
   }
 
-  const conn = getConnection();
-  const { blockhash } = await conn.getLatestBlockhash();
+  const blockhash = await getLatestBlockhashWithRetry();
 
   const result = await approveTask(taskId, posterWallet, blockhash);
-  return NextResponse.json(serialize(result));
+  return NextResponse.json(serialize({ ...result, isApprove: true, taskId }));
 });

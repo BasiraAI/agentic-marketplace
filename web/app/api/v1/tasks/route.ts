@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { wrap } from "@/lib/handler";
 import { serialize } from "@/lib/serialize";
-import { getConnection, createDirectTask, createBountyTask, getDb } from "@basira/shared";
+import { getLatestBlockhashWithRetry, createDirectTask, createBountyTask, getDb } from "@basira/shared";
 
 export const POST = wrap(async (req: NextRequest) => {
   const body = await req.json();
@@ -15,8 +15,7 @@ export const POST = wrap(async (req: NextRequest) => {
     );
   }
 
-  const conn = getConnection();
-  const { blockhash } = await conn.getLatestBlockhash();
+  const blockhash = await getLatestBlockhashWithRetry();
 
   const input = {
     ...body,
